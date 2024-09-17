@@ -28,7 +28,7 @@ func (t ComputadorServiceImpl) Create(computador request.CreateComputadorRequest
 		Id:             computador.Id,
 		Name:           computador.Name,
 		Cor:            computador.Cor,
-		DataFabricacao: int8(int(computador.DataFabricacao)),
+		DataFabricacao: computador.DataFabricacao,
 	}
 	t.ComputadorRepository.Save(computadorModel)
 }
@@ -52,7 +52,7 @@ func (t ComputadorServiceImpl) FindById(computadorId int) response.ComputadorRes
 		Id:             computadorData.Id,
 		Name:           computadorData.Name,
 		Cor:            computadorData.Cor,
-		DataFabricacao: int(computadorData.DataFabricacao),
+		DataFabricacao: computadorData.DataFabricacao,
 	}
 	return computadorResponse
 }
@@ -66,7 +66,7 @@ func (t ComputadorServiceImpl) FindAll() []response.ComputadorResponse {
 			Id:             value.Id,
 			Name:           value.Name,
 			Cor:            value.Cor,
-			DataFabricacao: int(value.DataFabricacao),
+			DataFabricacao: value.DataFabricacao,
 		}
 		computadores = append(computadores, computador)
 	}
